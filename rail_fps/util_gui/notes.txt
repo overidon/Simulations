@@ -1,0 +1,52 @@
+CEILING UNITS 
+
+closest to player.. 
+
+x = 0
+y = 0 
+w = 512
+h = 128 
+
+
+
+
+
+
+
+
+last trap... 
+(0, 384)
+
+
+
+
+
+art will be based on 32 h x 64 w 
+
+trapezoids on top of rectangles... 
+
+
+
+BOT LEFT     (130, 382)
+TOP LEFT     (194, 318)
+BOT RIGHT    (382, 312)
+TOP RIGHT .  (318, 318)
+
+
+TRAPEZOID WIDTH  => 252 
+TRAPEZOID HEIGHT => 70
+TRAPEZOID TOP OFFSET LEFT -> 64 
+TRAPEZOID TOP OFFSET RIGHT => 64  
+
+
+
+
+absolute trapezoid ground center = x -> 256
+absolute trapezoid ground center = y -> 340
+
+new Ground("GREEN_GROUND", 128, 319 );
+
+ CORRECT DISTORTED W / H 
+
+standard trap -> (x: 128   y: 319,  width = 256, h=  62  )
+bottom trap   -> (x: 0,    y: 383,  width = 512, h= 129)

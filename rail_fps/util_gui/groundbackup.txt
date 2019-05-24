@@ -1,0 +1,218 @@
+var ground_list = [];
+
+
+class Ground {
+
+  constructor (name, x, y){
+
+   
+    this.name = name; 
+    this.x    = x; 
+    this.y    = y; 
+  
+    this.size_ratio = 1;
+
+    this.distance_to_center = 0;
+    this.angle_to_center = 0;
+
+    // experimental world data 
+    this.y_world = y;
+    this.x_world = x; 
+
+    this.slope1 = 0; 
+    this.slope2 = 0; 
+
+    this.slopeCenter = 0; 
+
+    this.centerX = 0;
+    this.centerY = 0;
+
+  
+
+    this.debug = true; 
+
+    this.spawn = false; 
+
+    if (this.name == "GREEN_GROUND"){
+      this.img = document.getElementById("bricks_01"); 
+
+      this.w = 256;
+      this.h = 64;
+
+      this.w_actual = 256;
+      // experimental 
+      //this.h_actual = 62;
+      this.h_actual = 64;
+
+      findCenterX( this.x + this.h, this.x + this.w, this.x + this.w - this.h, this.x );
+
+
+
+    }
+
+    else {
+
+      this.img = document.getElementById("bricks_01"); 
+
+      this.w = 256;
+      this.h = 62;
+
+      this.w_actual = 256;
+      this.h_actual = 62;
+    }
+
+
+    ground_list.unshift(this);
+  // end of the Ground constructor 
+  }
+
+  update() {
+
+    // find distance from y of this...to the center y of canvas
+    // this works OK but it seems to accelerate
+
+    
+    if (ground_list.indexOf(this) == 0){
+       this.y = this.y_world + (stats[0].z_depth);
+    } else {
+      let prev= ground_list.indexOf(this) - 1;
+
+      this.y = ground_list[prev].y + ground_list[prev].h;
+    }
+    
+    //this.y = this.y_world + (stats[0].z_depth / 256 );
+    
+    this.distance_to_center = findLineDistToCenter(this );
+
+
+
+    //this.y = this.y + (stats[0].z_depth );
+
+    //this.w = this.w_actual * this.size_ratio ; 
+    //this.h = this.h_actual * this.size_ratio  ;
+
+    // almost done ... ,  this.y, this.x + this.w, this.y + this.h
+    // slopt 2 -> 
+    this.slope1 = findSlope( this.x + this.h_actual, this.y, this.x + this.w_actual, this.y + this.h_actual);
+
+    //this.slope2 = -1 * this.slope1;
+    // experimental
+    this.centerX = this.x + (this.w / 2) 
+    this.centerY = this.y + ( this.h  * this.slope1 )
+
+    this.slopeCenter = findSlope( 256, 256, this.centerX, this.centerY );
+
+    /*
+    if (this.slopeCenter != Infinity){
+      if (this.centerX < 256) {
+        this.x += 256 - this.centerX; 
+      } else {
+        this.x -=  this.centerX - 256;
+      }
+    }
+    */
+
+    this.w = this.distance_to_center * 4; 
+    this.h = this.distance_to_center; 
+    this.x = 256 - (this.w / 2) 
+
+
+   
+    
+  }
+
+  draw(){
+
+    if (this.debug){
+      ezRect(this.x, this.y, this.w, this.h, NUKE);
+    }
+    
+    // draw the ground 
+    ctxDATA.drawImage(this.img, this.x, this.y, this.w, this.h);
+
+    // begin debug data
+    if (this.debug){
+
+      
+
+
+      // Render the label 
+      ctxDATA.fillStyle = RED;
+      ctxDATA.font = 10 + "px Arial";
+      ctxDATA.fillText("DIST: " + this.distance_to_center, this.x + 4, this.y - 10);
+
+      // Render the label 
+      ctxDATA.fillStyle = GREEN;
+      ctxDATA.font = 10 + "px Arial";
+      ctxDATA.fillText("INDEX: " + ground_list.indexOf(this), this.x + 4, this.y - 20);
+
+      /*
+      
+      ctxDATA.fillStyle = NUKE;
+      ctxDATA.font = 10 + "px Arial";
+      ctxDATA.fillText("SLOPE CENTER: " + this.slopeCenter.toFixed(2), this.x + 4, this.y - 30);
+
+      
+      // Render the label 
+      ctxDATA.fillStyle = RED;
+      ctxDATA.font = 10 + "px Arial";
+      ctxDATA.fillText("SLOPEA: " + this.slope1, this.x + 4, this.y - 30);
+
+
+      // Render the label 
+      ctxDATA.fillStyle = RED;
+      ctxDATA.font = 10 + "px Arial";
+      ctxDATA.fillText("SLOPEB: " + this.slope2, this.x + 4, this.y - 40);
+      
+      // draw line based on x for start
+      ezLine(this.x +this.h,  this.y, this.x + this.w, this.y + this.h, 2, RED);
+
+      ezLine(this.x + this.w - this.h,  this.y,
+              this.x, this.y + this.h, 2, RED);
+
+      // draw a line from the center of each trapezoid to the center of the world! 
+
+      ezLine(this.centerX,  this.centerY,
+              256, 256, 2, BLUE);
+
+      // this must be the center 
+      ezCircle(this.centerX, this.centerY , 2, YELLOW, WHITE); 
+      */
+    }
+
+  // end of the draw method 
+  }
+
+// end of the Ground class ... 
+}
+
+function generateGround() {
+
+  for (let i = 0; i < 8; i++){
+    new Ground("GREEN_GROUND", 256, 256);
+  }
+
+}
+
+function repairGround() {
+  new Ground("GREEN_GROUND", 256, 256);
+}
+
+generateGround();
+
+
+//ground_list[0].debug = true; 
+
+
+
+/*
+
+yA       yB        yC
+263 ->  271  ->   287
+
+xA       xB
+242  ->  226  ->  194
+
+-21 DIF  -45 DIF  -93 dif
+
+*/

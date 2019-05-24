@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>repl.it</title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+
+    <canvas id = "dataCanvas" width="512px" height="512px" style="border: 5px solid"></canvas>
+
+
+    <img id="ENEMY_001C" src="./images/mobs/FPS_ENEMY_001C.png" alt="enemy" style="width:40px; height:32px; display:none;"> 
+
+    <img id="ceil_a" src="./images/enviro/depth_ceil.png" alt="ceil_a" style="width:252px; height:70px; display: none;"> 
+
+
+    <img id="wall_left" src="./images/enviro/depth_wall_left.png" alt="wall_left" style="display: none;"> 
+
+    <img id="wall_right" src="./images/enviro/depth_wall_right.png" alt="wall_right" style="display: none;"> 
+
+    <img id="bricks_01" src="./images/enviro/depth_bricks_v6.png" alt="bricks_01" style="width:252px; height:70px; display: none;"> 
+
+
+    <img id="bricks_02" src="./images/enviro/db_blue.png" alt="bricks_02" style="width:252px; height:70px; display: none;"> 
+
+
+    <img id="bricks_03" src="./images/enviro/db_red.png" alt="bricks_03" style="width:252px; height:70px; display: none;"> 
+
+    <img id="ENEMY_DEAD" src="./images/mobs/FPS_ENEMY_DEAD.png" alt="enemy" style="width:40px; height:32px; display: none;"> 
+
+
+    <img id="ENEMY_DEAD2" src="./images/mobs/FPS_ENEMY_DEAD_2.png" alt="enemy" style="width:40px; height:32px; display:none;"> 
+
+    <img id="crosshair" src="./images/player/crosshair.png" alt="crosshair" style="width:52px; height:52px; display:none;">  
+
+    <table>
+      <thead>
+        <tr>
+          <th>MOUSE X</th>
+          <th>MOUSE Y</th>
+          <th>C.X  </th>
+          <th>C.Y  </th>
+          <th>z_depth   </th> 
+          <th>dashUP   </th>
+          <th>dashDOWN </th>
+          <th>player.z </th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <td><div id="mouse_x">?</div></td> 
+        <td><div id="mouse_y">?</div></td> 
+        <td><div id="cross_center_x">?</div></td> 
+        <td><div id="cross_center_y">?</div></td> 
+        <td><div id="z_depth">?</div></td> 
+        <td><div id="dashUP">?</div></td> 
+        <td><div id="dashDOWN">?</div></td> 
+        <td><div id="player.z">?</div></td>
+      </tbody>
+
+    </table>
+
+    <script src="./core/stats.js"></script>
+    <script src="./util_gui/keycontrol.js"></script>
+    <script src="./core/player.js"></script>
+    <script src="./util_gui/utility.js"></script>
+    <script src="./util_gui/colors.js"></script>
+    <script src="./util_gui/ezgeom.js"></script>
+    <script src="./util_gui/ground.js"></script>
+    <script src="./util_gui/ceiling.js"></script>
+    <script src="./util_gui/left_wall.js"></script>
+    <script src="./util_gui/right_wall.js"></script>
+    <script src="./util_gui/gui.js"></script>
+    <script src="./core/mob.js"></script>
+
+    <script src="script.js"></script>
+
+    <p>Use Up and Down Keyboard Keys to move through the corridor. </p>
+    <p>The player.z field represents the position of the player in the game world. </p>
+    <p>The purpose of this project is to visually represent a custom linked-list in vanilla Javscript</p>
+    
+  </body>
+</html>

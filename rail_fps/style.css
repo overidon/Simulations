@@ -1,0 +1,34 @@
+th {
+  border: 4px solid rgb(33, 83, 0);
+  padding: 0.4rem;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 14px;
+  margin: 0.7rem;
+  background: rgb(142, 41, 75);
+  color: rgb(243, 243, 255);
+}
+
+td {
+  border: 4px solid rgb(63, 1, 27);
+  padding: 0.4rem;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 14px;
+  margin: 0.7rem;
+  background: rgb(24, 53, 116);
+  color: rgb(243, 243, 255);
+}
+
+button {
+  background: #e8d8fc;
+}
+
+h1 {
+
+  background: rgb(42, 3, 75);
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 40px;
+  color: azure;
+}
+
+
+canvas {cursor: none;}
