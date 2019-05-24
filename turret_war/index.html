@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Turret Simulation</title>
+    <link href="index.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+
+    <canvas id="dataCanvas" width="512px" height="512px" style="border: 5px solid"></canvas>
+
+
+    <script src="colors.js"></script>
+    <script src="ezgeom.js"></script>
+    <script src="stats.js"></script>
+
+    <script src="fontbuddy.js"></script>
+    <script src="sky.js"></script>
+    <script src="utility.js"></script>
+    <script src="dirt.js"></script>
+    <script src="turret.js"></script>
+    <script src="ammo.js"></script>
+    <script src="keycontrol.js"></script>
+    <script src="index.js"></script>
+
+
+    <p> Use WASD to control the angle of the turret. </p> 
+    <p> Use QERF to control power of the shot (This affects how far it can go). </p>
+    <p> Fire the salvo with the Spacebar. </p>
+    <p> The purpose of this project is to illustrate collisions against individual particles...</p>
+    <p> ...and filtering the destroyed dirt via the "detectDestroyedDirt() function". </p>
+    <p> This is an interactive visual representation of a callback in Javascript. </p> 
+
+  </body>
+</html>
