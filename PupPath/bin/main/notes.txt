@@ -1,4 +1,19 @@
 
+
+Things to add..
+
+An arrayList of Integers for the directions to any food
+
+boolean for food found.
+
+
+
+
+
+
+
+
+
 		/*
 		for (int i = 0; i < 5; i++) {
 			

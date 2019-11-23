@@ -204,8 +204,16 @@ public class Dog extends Node {
 		
 		
 		for (int dir = 0; dir < 4; dir++) {
-			
+				
 			if ( this.canIWalkThere(dir)) {
+				
+				// only sleep if you can walk there! 
+				try {
+					Thread.sleep(290);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 				
 				//System.out.println("If I can walk to the " + Loader.dirMap[dir]  + "... I will spawn there!");
 				
@@ -253,12 +261,8 @@ public class Dog extends Node {
 				// store the dog Node in the world
 				Game.world[this.row][this.col] = oldPup;
 				
-				try {
-					Thread.sleep(180);
-				} catch (InterruptedException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+				// At the end of each successful turn display the world!
+				Game.displayWorld();
 				
 				// EXPERIMENTAL CODE -> COULD EXPLODE
 				dupliPup.walkRecursive();
@@ -268,8 +272,7 @@ public class Dog extends Node {
 		// end of the dir for loop 	
 		}
 		
-		// At the end of all 4 turns of walk 
-		Game.displayWorld();
+
 	
 		
 		

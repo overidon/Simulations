@@ -74,7 +74,7 @@ public class Game {
 			}
 		}
 		
-		System.out.println("This map has a total of: " + counter + " foods for me to find!");
+		//System.out.println("This map has a total of: " + counter + " foods for me to find!");
 		
 		return counter;
 		
@@ -83,6 +83,10 @@ public class Game {
 	
 	
 	public static void displayWorld() {
+		
+		for (int i = 0; i < 80; i++) {
+			System.out.println("");
+		}
 		
 		System.out.println("\n");
 		System.out.println("**********       THE WORLD  ********    ");
